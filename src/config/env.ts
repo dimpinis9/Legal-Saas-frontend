@@ -7,11 +7,12 @@ interface EnvConfig {
 }
 
 function validateEnv(): EnvConfig {
-  const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl =
+    import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL;
 
   if (!apiUrl) {
     throw new Error(
-      "VITE_API_URL is not defined. Please check your .env file."
+      "VITE_API_BASE_URL or VITE_API_URL is not defined. Please check your .env file."
     );
   }
 

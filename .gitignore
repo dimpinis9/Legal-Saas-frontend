@@ -41,3 +41,6 @@ dist-ssr
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Documentation
+*.md

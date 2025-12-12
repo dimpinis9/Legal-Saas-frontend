@@ -8,7 +8,9 @@ export const setAuthToken = (newToken: string | null) => {
 
 const createHttpClient = (): AxiosInstance => {
   const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api",
+    baseURL:
+      import.meta.env.VITE_API_BASE_URL ||
+      "https://legal-saas-backend-cshf.onrender.com/api",
     headers: { "Content-Type": "application/json" },
   });
 

@@ -14,7 +14,10 @@
       "@hooks/*": ["src/hooks/*"],
       "@config/*": ["src/config/*"],
       "@context/*": ["src/context/*"],
-      "@router/*": ["src/router/*"]
+      "@router/*": ["src/router/*"],
+      "@store/*": ["src/store/*"],
+      "@types/*": ["src/types/*"],
+      "@i18n/*": ["src/i18n/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

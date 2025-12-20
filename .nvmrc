@@ -1,0 +1,7 @@
+# Package Manager Configuration
+
+package-manager=pnpm@9.15.0
+
+# Node.js version requirement
+
+engines-strict=true

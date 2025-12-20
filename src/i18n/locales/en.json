@@ -1,0 +1,192 @@
+{
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required",
+    "loggingIn": "Logging in...",
+    "loginFailed": "Login failed"
+  },
+  "common": {
+    "search": "Search",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close",
+    "submit": "Submit",
+    "actions": "Actions",
+    "view": "View",
+    "status": "Status",
+    "date": "Date",
+    "description": "Description",
+    "title": "Title",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "notes": "Notes",
+    "documents": "Documents",
+    "activity": "Activity",
+    "back": "Back",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "cases": "Cases",
+    "clients": "Clients",
+    "tasks": "Tasks",
+    "deadlines": "Deadlines",
+    "calendar": "Calendar"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "overview": "Overview",
+    "recentActivity": "Recent Activity",
+    "upcomingDeadlines": "Upcoming Deadlines",
+    "activeCases": "Active Cases",
+    "pendingTasks": "Pending Tasks",
+    "totalClients": "Total Clients",
+    "quickActions": "Quick Actions",
+    "addCase": "New Case",
+    "addClient": "New Client",
+    "addTask": "New Task"
+  },
+  "cases": {
+    "title": "Cases",
+    "caseDetails": "Case Details",
+    "caseNumber": "Case Number",
+    "caseTitle": "Case Title",
+    "caseType": "Case Type",
+    "client": "Client",
+    "status": "Status",
+    "openDate": "Open Date",
+    "closeDate": "Close Date",
+    "addCase": "Add Case",
+    "editCase": "Edit Case",
+    "noCases": "No cases found",
+    "statuses": {
+      "all": "All",
+      "active": "Active",
+      "pending": "Pending",
+      "closed": "Closed",
+      "archived": "Archived"
+    },
+    "types": {
+      "civil": "Civil",
+      "criminal": "Criminal",
+      "corporate": "Corporate",
+      "family": "Family",
+      "other": "Other"
+    }
+  },
+  "clients": {
+    "title": "Clients",
+    "clientDetails": "Client Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "fullName": "Full Name",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "addClient": "Add Client",
+    "editClient": "Edit Client",
+    "noClients": "No clients found",
+    "cases": "Client Cases",
+    "noCases": "Client has no cases"
+  },
+  "tasks": {
+    "title": "Tasks",
+    "taskDetails": "Task Details",
+    "taskTitle": "Task Title",
+    "description": "Description",
+    "dueDate": "Due Date",
+    "priority": "Priority",
+    "status": "Status",
+    "assignedTo": "Assigned To",
+    "relatedCase": "Related Case",
+    "addTask": "Add Task",
+    "editTask": "Edit Task",
+    "noTasks": "No tasks found",
+    "statuses": {
+      "pending": "Pending",
+      "inProgress": "In Progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "priorities": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "urgent": "Urgent"
+    }
+  },
+  "deadlines": {
+    "title": "Deadlines",
+    "deadlineDetails": "Deadline Details",
+    "deadlineTitle": "Deadline Title",
+    "description": "Description",
+    "dueDate": "Due Date",
+    "relatedCase": "Related Case",
+    "addDeadline": "Add Deadline",
+    "editDeadline": "Edit Deadline",
+    "noDeadlines": "No deadlines found",
+    "upcoming": "Upcoming",
+    "overdue": "Overdue",
+    "showCompleted": "Show completed",
+    "completed": "Completed",
+    "complete": "Complete",
+    "type": "Type"
+  },
+  "calendar": {
+    "title": "Calendar",
+    "today": "Today",
+    "previous": "Previous",
+    "next": "Next",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "agenda": "Agenda",
+    "time": "Time",
+    "event": "Event",
+    "noEvents": "No events"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "noNotifications": "No notifications",
+    "markAsRead": "Mark as read",
+    "markAllAsRead": "Mark all as read"
+  },
+  "notes": {
+    "title": "Notes",
+    "addNote": "Add Note",
+    "editNote": "Edit Note",
+    "content": "Content",
+    "noNotes": "No notes"
+  },
+  "documents": {
+    "title": "Documents",
+    "uploadDocument": "Upload Document",
+    "fileName": "File Name",
+    "fileSize": "Size",
+    "uploadDate": "Upload Date",
+    "download": "Download",
+    "noDocuments": "No documents"
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "networkError": "Network error",
+    "notFound": "Not found",
+    "unauthorized": "Unauthorized access",
+    "validationError": "Validation error",
+    "tryAgain": "Try again"
+  }
+}

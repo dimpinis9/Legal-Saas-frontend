@@ -24,8 +24,10 @@ import ErrorState from "../../components/common/ErrorState";
 import { useNavigate } from "react-router-dom";
 import CaseForm from "./CaseForm";
 import type { NewCasePayload, CaseStatus } from "../../types/case";
+import { useTranslation } from "react-i18next";
 
 const CasesListPage: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [open, setOpen] = React.useState(false);
@@ -53,7 +55,7 @@ const CasesListPage: React.FC = () => {
   });
 
   if (casesQuery.isLoading) return <LoadingState />;
-  if (casesQuery.isError) return <ErrorState message="Failed to load cases" />;
+  if (casesQuery.isError) return <ErrorState message={t("errors.generic")} />;
 
   const cases = casesQuery.data || [];
   const clients = clientsQuery.data || [];
@@ -61,37 +63,43 @@ const CasesListPage: React.FC = () => {
   return (
     <Box>
       <Box display="flex" justifyContent="space-between" mb={2}>
-        <Typography variant="h5">Cases</Typography>
+        <Typography variant="h5">{t("cases.title")}</Typography>
         <Box display="flex" gap={2}>
           <FormControl size="small" sx={{ minWidth: 150 }}>
-            <InputLabel>Status</InputLabel>
+            <InputLabel>{t("common.status")}</InputLabel>
             <Select
               value={statusFilter}
               onChange={(e) =>
                 setStatusFilter(e.target.value as CaseStatus | "ALL")
               }
-              label="Status"
+              label={t("common.status")}
             >
-              <MenuItem value="ALL">All</MenuItem>
-              <MenuItem value="OPEN">OPEN</MenuItem>
-              <MenuItem value="PENDING_HEARING">PENDING HEARING</MenuItem>
-              <MenuItem value="UNDER_APPEAL">UNDER APPEAL</MenuItem>
-              <MenuItem value="CLOSED">CLOSED</MenuItem>
+              <MenuItem value="ALL">
+                {t("cases.statuses.all") || "All"}
+              </MenuItem>
+              <MenuItem value="OPEN">{t("cases.statuses.active")}</MenuItem>
+              <MenuItem value="PENDING_HEARING">
+                {t("cases.statuses.pending")}
+              </MenuItem>
+              <MenuItem value="UNDER_APPEAL">
+                {t("cases.statuses.pending")}
+              </MenuItem>
+              <MenuItem value="CLOSED">{t("cases.statuses.closed")}</MenuItem>
             </Select>
           </FormControl>
           <Button variant="contained" onClick={() => setOpen(true)}>
-            New Case
+            {t("cases.addCase")}
           </Button>
         </Box>
       </Box>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Title</TableCell>
-            <TableCell>Case Number</TableCell>
-            <TableCell>Client</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>First Hearing</TableCell>
+            <TableCell>{t("common.title")}</TableCell>
+            <TableCell>{t("cases.caseNumber")}</TableCell>
+            <TableCell>{t("cases.client")}</TableCell>
+            <TableCell>{t("common.status")}</TableCell>
+            <TableCell>{t("cases.openDate")}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -127,7 +135,7 @@ const CasesListPage: React.FC = () => {
         fullWidth
         maxWidth="sm"
       >
-        <DialogTitle>New Case</DialogTitle>
+        <DialogTitle>{t("cases.addCase")}</DialogTitle>
         <DialogContent>
           <CaseForm
             disabled={createMutation.isPending}

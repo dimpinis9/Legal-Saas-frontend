@@ -16,8 +16,10 @@ import {
 } from "@mui/material";
 import LoadingState from "../../components/common/LoadingState";
 import ErrorState from "../../components/common/ErrorState";
+import { useTranslation } from "react-i18next";
 
 const DeadlinesListPage: React.FC = () => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [showCompleted, setShowCompleted] = React.useState(false);
 
@@ -42,7 +44,7 @@ const DeadlinesListPage: React.FC = () => {
 
   if (deadlinesQuery.isLoading || casesQuery.isLoading) return <LoadingState />;
   if (deadlinesQuery.isError)
-    return <ErrorState message="Failed to load deadlines" />;
+    return <ErrorState message={t("errors.generic")} />;
 
   const deadlines = deadlinesQuery.data || [];
   const cases = casesQuery.data || [];
@@ -50,7 +52,7 @@ const DeadlinesListPage: React.FC = () => {
   return (
     <Box>
       <Box display="flex" justifyContent="space-between" mb={2}>
-        <Typography variant="h5">Deadlines</Typography>
+        <Typography variant="h5">{t("deadlines.title")}</Typography>
         <FormControlLabel
           control={
             <Checkbox
@@ -58,18 +60,18 @@ const DeadlinesListPage: React.FC = () => {
               onChange={(e) => setShowCompleted(e.target.checked)}
             />
           }
-          label="Show completed"
+          label={t("deadlines.showCompleted") || "Show completed"}
         />
       </Box>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Title</TableCell>
-            <TableCell>Case</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Due Date</TableCell>
-            <TableCell>Completed</TableCell>
-            <TableCell>Actions</TableCell>
+            <TableCell>{t("common.title")}</TableCell>
+            <TableCell>{t("cases.title")}</TableCell>
+            <TableCell>{t("deadlines.type") || "Type"}</TableCell>
+            <TableCell>{t("deadlines.dueDate")}</TableCell>
+            <TableCell>{t("deadlines.completed") || "Completed"}</TableCell>
+            <TableCell>{t("common.actions")}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -83,7 +85,11 @@ const DeadlinesListPage: React.FC = () => {
                 <TableCell>
                   {new Date(d.dueDate).toLocaleDateString()}
                 </TableCell>
-                <TableCell>{d.completed ? "Yes" : "No"}</TableCell>
+                <TableCell>
+                  {d.completed
+                    ? t("common.yes") || "Yes"
+                    : t("common.no") || "No"}
+                </TableCell>
                 <TableCell>
                   {!d.completed && (
                     <Button
@@ -91,7 +97,7 @@ const DeadlinesListPage: React.FC = () => {
                       onClick={() => completeMutation.mutate(d.id)}
                       disabled={completeMutation.isPending}
                     >
-                      Complete
+                      {t("deadlines.complete") || "Complete"}
                     </Button>
                   )}
                 </TableCell>
@@ -100,7 +106,7 @@ const DeadlinesListPage: React.FC = () => {
           })}
           {deadlines.length === 0 && (
             <TableRow>
-              <TableCell colSpan={6}>No deadlines.</TableCell>
+              <TableCell colSpan={6}>{t("deadlines.noDeadlines")}</TableCell>
             </TableRow>
           )}
         </TableBody>

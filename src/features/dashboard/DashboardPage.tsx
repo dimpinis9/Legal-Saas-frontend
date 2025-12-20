@@ -8,8 +8,10 @@ import { Add as AddIcon } from "@mui/icons-material";
 import LoadingState from "../../components/common/LoadingState";
 import ErrorState from "../../components/common/ErrorState";
 import QuickAddCase from "../../components/common/QuickAddCase";
+import { useTranslation } from "react-i18next";
 
 const DashboardPage: React.FC = () => {
+  const { t } = useTranslation();
   const [quickAddOpen, setQuickAddOpen] = React.useState(false);
   const upcomingDeadlinesQuery = useQuery({
     queryKey: ["deadlines", { nextDays: 7 }],
@@ -39,7 +41,7 @@ const DashboardPage: React.FC = () => {
     openCasesQuery.isError ||
     openTasksQuery.isError
   ) {
-    return <ErrorState message="Failed to load dashboard data" />;
+    return <ErrorState message={t("errors.generic")} />;
   }
 
   const upcoming = upcomingDeadlinesQuery.data || [];
@@ -49,13 +51,15 @@ const DashboardPage: React.FC = () => {
   return (
     <Box>
       <Typography variant="h5" mb={3}>
-        Dashboard
+        {t("dashboard.title")}
       </Typography>
       <Grid container spacing={2} mb={3}>
         <Grid item xs={12} sm={4}>
           <Card>
             <CardContent>
-              <Typography variant="subtitle2">Open Cases</Typography>
+              <Typography variant="subtitle2">
+                {t("dashboard.activeCases")}
+              </Typography>
               <Typography variant="h4">{openCases.length}</Typography>
             </CardContent>
           </Card>
@@ -63,7 +67,9 @@ const DashboardPage: React.FC = () => {
         <Grid item xs={12} sm={4}>
           <Card>
             <CardContent>
-              <Typography variant="subtitle2">Open Tasks</Typography>
+              <Typography variant="subtitle2">
+                {t("dashboard.pendingTasks")}
+              </Typography>
               <Typography variant="h4">{openTasks.length}</Typography>
             </CardContent>
           </Card>
@@ -72,7 +78,7 @@ const DashboardPage: React.FC = () => {
           <Card>
             <CardContent>
               <Typography variant="subtitle2">
-                Upcoming Deadlines (7d)
+                {t("dashboard.upcomingDeadlines")}
               </Typography>
               <Typography variant="h4">{upcoming.length}</Typography>
             </CardContent>
@@ -82,10 +88,10 @@ const DashboardPage: React.FC = () => {
       <Card>
         <CardContent>
           <Typography variant="h6" mb={2}>
-            Upcoming Deadlines
+            {t("dashboard.upcomingDeadlines")}
           </Typography>
           {upcoming.length === 0 && (
-            <Typography>No deadlines in next 7 days.</Typography>
+            <Typography>{t("deadlines.noDeadlines")}</Typography>
           )}
           {upcoming.map((d) => (
             <Box

@@ -7,12 +7,18 @@ import {
   CardContent,
   TextField,
   Typography,
+  IconButton,
+  InputAdornment,
 } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { AuthCredentials } from "../../types/auth";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "../../components/common/LanguageSwitcher";
 
 const LoginPage: React.FC = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -21,6 +27,7 @@ const LoginPage: React.FC = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = React.useState<string | null>(null);
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const onSubmit = async (values: AuthCredentials) => {
     setError(null);
@@ -28,8 +35,12 @@ const LoginPage: React.FC = () => {
       await login(values);
       navigate("/dashboard");
     } catch (e: any) {
-      setError(e.message || "Login failed");
+      setError(e.message || t("auth.loginFailed"));
     }
+  };
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -39,29 +50,47 @@ const LoginPage: React.FC = () => {
       justifyContent="center"
       minHeight="100vh"
     >
+      <Box sx={{ position: "absolute", top: 16, right: 16 }}>
+        <LanguageSwitcher />
+      </Box>
       <Card sx={{ width: 400 }}>
         <CardContent>
           <Typography variant="h5" mb={2}>
-            Login
+            {t("auth.login")}
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <TextField
-              label="Email"
+              label={t("auth.email")}
               fullWidth
               type="email"
               margin="normal"
-              {...register("email", { required: "Email is required" })}
+              {...register("email", { required: t("auth.emailRequired") })}
               error={!!errors.email}
               helperText={errors.email?.message}
             />
             <TextField
-              label="Password"
+              label={t("auth.password")}
               fullWidth
-              type="password"
+              type={showPassword ? "text" : "password"}
               margin="normal"
-              {...register("password", { required: "Password is required" })}
+              {...register("password", {
+                required: t("auth.passwordRequired"),
+              })}
               error={!!errors.password}
               helperText={errors.password?.message}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleTogglePasswordVisibility}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             {error && (
               <Typography color="error" variant="body2" mt={1}>
@@ -75,7 +104,7 @@ const LoginPage: React.FC = () => {
               sx={{ mt: 2 }}
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Logging in..." : "Login"}
+              {isSubmitting ? t("auth.loggingIn") : t("auth.login")}
             </Button>
           </form>
         </CardContent>

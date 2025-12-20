@@ -2,28 +2,37 @@ import React, { useMemo } from "react";
 import { Box, Typography, Paper } from "@mui/material";
 import { Calendar, dateFnsLocalizer, Event } from "react-big-calendar";
 import { format, parse, startOfWeek, getDay } from "date-fns";
-import { el } from "date-fns/locale";
+import { el, enUS } from "date-fns/locale";
 import { useQuery } from "@tanstack/react-query";
 import { deadlinesApi } from "../../api/deadlinesApi";
 import { tasksApi } from "../../api/tasksApi";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import LoadingState from "../../components/common/LoadingState";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const locales = {
-  "el-GR": el,
+  el: el,
+  en: enUS,
 };
-
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek: () => startOfWeek(new Date(), { locale: el }),
-  getDay,
-  locales,
-});
 
 const CalendarPage: React.FC = () => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+
+  const currentLocale = i18n.language === "el" ? el : enUS;
+
+  const localizer = useMemo(
+    () =>
+      dateFnsLocalizer({
+        format,
+        parse,
+        startOfWeek: () => startOfWeek(new Date(), { locale: currentLocale }),
+        getDay,
+        locales,
+      }),
+    [currentLocale]
+  );
 
   const deadlinesQuery = useQuery({
     queryKey: ["deadlines"],
@@ -97,7 +106,7 @@ const CalendarPage: React.FC = () => {
         alignItems="center"
         mb={3}
       >
-        <Typography variant="h5">Ημερολόγιο Προθεσμιών & Εργασιών</Typography>
+        <Typography variant="h5">{t("calendar.title")}</Typography>
         <Box display="flex" gap={1}>
           <Box display="flex" alignItems="center" gap={0.5}>
             <Box
@@ -108,7 +117,7 @@ const CalendarPage: React.FC = () => {
                 borderRadius: 1,
               }}
             />
-            <Typography variant="caption">Προθεσμίες</Typography>
+            <Typography variant="caption">{t("deadlines.title")}</Typography>
           </Box>
           <Box display="flex" alignItems="center" gap={0.5}>
             <Box
@@ -119,7 +128,7 @@ const CalendarPage: React.FC = () => {
                 borderRadius: 1,
               }}
             />
-            <Typography variant="caption">Εργασίες</Typography>
+            <Typography variant="caption">{t("tasks.title")}</Typography>
           </Box>
         </Box>
       </Box>
@@ -135,17 +144,17 @@ const CalendarPage: React.FC = () => {
             navigate(`/cases/${event.resource.caseFileId}`);
           }}
           messages={{
-            today: "Σήμερα",
-            previous: "Προηγούμενο",
-            next: "Επόμενο",
-            month: "Μήνας",
-            week: "Εβδομάδα",
-            day: "Ημέρα",
-            agenda: "Ατζέντα",
-            date: "Ημερομηνία",
-            time: "Ώρα",
-            event: "Γεγονός",
-            noEventsInRange: "Δεν υπάρχουν γεγονότα σε αυτό το εύρος.",
+            today: t("calendar.today"),
+            previous: t("calendar.previous") || "Previous",
+            next: t("calendar.next") || "Next",
+            month: t("calendar.month"),
+            week: t("calendar.week"),
+            day: t("calendar.day"),
+            agenda: t("calendar.agenda"),
+            date: t("common.date"),
+            time: t("calendar.time") || "Time",
+            event: t("calendar.event") || "Event",
+            noEventsInRange: t("calendar.noEvents"),
           }}
         />
       </Paper>

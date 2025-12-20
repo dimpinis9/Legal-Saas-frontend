@@ -19,8 +19,10 @@ import ErrorState from "../../components/common/ErrorState.tsx";
 import { useNavigate } from "react-router-dom";
 import ClientForm from "./ClientForm.tsx";
 import type { NewClientPayload } from "../../types/client.ts";
+import { useTranslation } from "react-i18next";
 
 const ClientsListPage: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [open, setOpen] = React.useState(false);
@@ -39,25 +41,24 @@ const ClientsListPage: React.FC = () => {
   });
 
   if (clientsQuery.isLoading) return <LoadingState />;
-  if (clientsQuery.isError)
-    return <ErrorState message="Failed to load clients" />;
+  if (clientsQuery.isError) return <ErrorState message={t("errors.generic")} />;
 
   const clients = clientsQuery.data || [];
 
   return (
     <Box>
       <Box display="flex" justifyContent="space-between" mb={2}>
-        <Typography variant="h5">Clients</Typography>
+        <Typography variant="h5">{t("clients.title")}</Typography>
         <Button variant="contained" onClick={() => setOpen(true)}>
-          New Client
+          {t("clients.addClient")}
         </Button>
       </Box>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Phone</TableCell>
+            <TableCell>{t("common.name")}</TableCell>
+            <TableCell>{t("common.email")}</TableCell>
+            <TableCell>{t("common.phone")}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -84,7 +85,7 @@ const ClientsListPage: React.FC = () => {
         fullWidth
         maxWidth="sm"
       >
-        <DialogTitle>New Client</DialogTitle>
+        <DialogTitle>{t("clients.addClient")}</DialogTitle>
         <DialogContent>
           <ClientForm
             disabled={createMutation.isPending}

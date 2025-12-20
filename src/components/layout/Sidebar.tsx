@@ -7,21 +7,23 @@ import {
   Toolbar,
 } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
-
-const navItems = [
-  { label: "Dashboard", path: "/dashboard" },
-  { label: "Clients", path: "/clients" },
-  { label: "Cases", path: "/cases" },
-  { label: "Calendar", path: "/calendar" },
-  { label: "Deadlines", path: "/deadlines" },
-  { label: "Tasks", path: "/tasks" },
-];
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 220;
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
+
+  const navItems = [
+    { label: t("navigation.dashboard"), path: "/dashboard" },
+    { label: t("navigation.clients"), path: "/clients" },
+    { label: t("navigation.cases"), path: "/cases" },
+    { label: t("navigation.calendar"), path: "/calendar" },
+    { label: t("navigation.deadlines"), path: "/deadlines" },
+    { label: t("navigation.tasks"), path: "/tasks" },
+  ];
 
   return (
     <Drawer

@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { authApi } from "../api/authApi.ts";
+import { setAuthToken } from "../api/httpClient.ts";
 import type { AuthCredentials, AuthResponse } from "../types/auth.ts";
 
 interface AuthContextValue {
@@ -32,6 +33,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({
     const stored = localStorage.getItem(TOKEN_STORAGE_KEY);
     if (stored) {
       setAccessToken(stored);
+      setAuthToken(stored); // Set token in httpClient
     }
     setIsLoading(false);
   }, []);
@@ -39,11 +41,13 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({
   const login = useCallback(async (credentials: AuthCredentials) => {
     const res: AuthResponse = await authApi.login(credentials);
     setAccessToken(res.accessToken);
+    setAuthToken(res.accessToken); // Set token in httpClient
     localStorage.setItem(TOKEN_STORAGE_KEY, res.accessToken);
   }, []);
 
   const logout = useCallback(() => {
     setAccessToken(null);
+    setAuthToken(null); // Clear token from httpClient
     localStorage.removeItem(TOKEN_STORAGE_KEY);
   }, []);
 

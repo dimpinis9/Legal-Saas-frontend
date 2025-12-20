@@ -1,0 +1,192 @@
+{
+  "auth": {
+    "login": "Σύνδεση",
+    "logout": "Αποσύνδεση",
+    "email": "Email",
+    "password": "Κωδικός",
+    "emailRequired": "Το email είναι υποχρεωτικό",
+    "passwordRequired": "Ο κωδικός είναι υποχρεωτικός",
+    "loggingIn": "Σύνδεση...",
+    "loginFailed": "Η σύνδεση απέτυχε"
+  },
+  "common": {
+    "search": "Αναζήτηση",
+    "add": "Προσθήκη",
+    "edit": "Επεξεργασία",
+    "delete": "Διαγραφή",
+    "save": "Αποθήκευση",
+    "cancel": "Ακύρωση",
+    "loading": "Φόρτωση...",
+    "error": "Σφάλμα",
+    "success": "Επιτυχία",
+    "close": "Κλείσιμο",
+    "submit": "Υποβολή",
+    "actions": "Ενέργειες",
+    "view": "Προβολή",
+    "status": "Κατάσταση",
+    "date": "Ημερομηνία",
+    "description": "Περιγραφή",
+    "title": "Τίτλος",
+    "name": "Όνομα",
+    "phone": "Τηλέφωνο",
+    "email": "Email",
+    "address": "Διεύθυνση",
+    "notes": "Σημειώσεις",
+    "documents": "Έγγραφα",
+    "activity": "Δραστηριότητα",
+    "back": "Πίσω",
+    "yes": "Ναι",
+    "no": "Όχι"
+  },
+  "navigation": {
+    "dashboard": "Αρχική",
+    "cases": "Υποθέσεις",
+    "clients": "Πελάτες",
+    "tasks": "Εργασίες",
+    "deadlines": "Προθεσμίες",
+    "calendar": "Ημερολόγιο"
+  },
+  "dashboard": {
+    "title": "Αρχική Σελίδα",
+    "welcome": "Καλώς ήρθατε",
+    "overview": "Επισκόπηση",
+    "recentActivity": "Πρόσφατη Δραστηριότητα",
+    "upcomingDeadlines": "Επερχόμενες Προθεσμίες",
+    "activeCases": "Ενεργές Υποθέσεις",
+    "pendingTasks": "Εκκρεμείς Εργασίες",
+    "totalClients": "Σύνολο Πελατών",
+    "quickActions": "Γρήγορες Ενέργειες",
+    "addCase": "Νέα Υπόθεση",
+    "addClient": "Νέος Πελάτης",
+    "addTask": "Νέα Εργασία"
+  },
+  "cases": {
+    "title": "Υποθέσεις",
+    "caseDetails": "Λεπτομέρειες Υπόθεσης",
+    "caseNumber": "Αριθμός Υπόθεσης",
+    "caseTitle": "Τίτλος Υπόθεσης",
+    "caseType": "Τύπος Υπόθεσης",
+    "client": "Πελάτης",
+    "status": "Κατάσταση",
+    "openDate": "Ημ. Ανοίγματος",
+    "closeDate": "Ημ. Κλεισίματος",
+    "addCase": "Προσθήκη Υπόθεσης",
+    "editCase": "Επεξεργασία Υπόθεσης",
+    "noCases": "Δεν υπάρχουν υποθέσεις",
+    "statuses": {
+      "all": "Όλες",
+      "active": "Ενεργή",
+      "pending": "Εκκρεμής",
+      "closed": "Κλειστή",
+      "archived": "Αρχειοθετημένη"
+    },
+    "types": {
+      "civil": "Αστική",
+      "criminal": "Ποινική",
+      "corporate": "Εταιρική",
+      "family": "Οικογενειακή",
+      "other": "Άλλο"
+    }
+  },
+  "clients": {
+    "title": "Πελάτες",
+    "clientDetails": "Λεπτομέρειες Πελάτη",
+    "firstName": "Όνομα",
+    "lastName": "Επώνυμο",
+    "fullName": "Ονοματεπώνυμο",
+    "phone": "Τηλέφωνο",
+    "email": "Email",
+    "address": "Διεύθυνση",
+    "addClient": "Προσθήκη Πελάτη",
+    "editClient": "Επεξεργασία Πελάτη",
+    "noClients": "Δεν υπάρχουν πελάτες",
+    "cases": "Υποθέσεις Πελάτη",
+    "noCases": "Ο πελάτης δεν έχει υποθέσεις"
+  },
+  "tasks": {
+    "title": "Εργασίες",
+    "taskDetails": "Λεπτομέρειες Εργασίας",
+    "taskTitle": "Τίτλος Εργασίας",
+    "description": "Περιγραφή",
+    "dueDate": "Προθεσμία",
+    "priority": "Προτεραιότητα",
+    "status": "Κατάσταση",
+    "assignedTo": "Ανατέθηκε σε",
+    "relatedCase": "Σχετική Υπόθεση",
+    "addTask": "Προσθήκη Εργασίας",
+    "editTask": "Επεξεργασία Εργασίας",
+    "noTasks": "Δεν υπάρχουν εργασίες",
+    "statuses": {
+      "pending": "Εκκρεμής",
+      "inProgress": "Σε Εξέλιξη",
+      "completed": "Ολοκληρωμένη",
+      "cancelled": "Ακυρωμένη"
+    },
+    "priorities": {
+      "low": "Χαμηλή",
+      "medium": "Μεσαία",
+      "high": "Υψηλή",
+      "urgent": "Επείγουσα"
+    }
+  },
+  "deadlines": {
+    "title": "Προθεσμίες",
+    "deadlineDetails": "Λεπτομέρειες Προθεσμίας",
+    "deadlineTitle": "Τίτλος Προθεσμίας",
+    "description": "Περιγραφή",
+    "dueDate": "Ημερομηνία Λήξης",
+    "relatedCase": "Σχετική Υπόθεση",
+    "addDeadline": "Προσθήκη Προθεσμίας",
+    "editDeadline": "Επεξεργασία Προθεσμίας",
+    "noDeadlines": "Δεν υπάρχουν προθεσμίες",
+    "upcoming": "Επερχόμενες",
+    "overdue": "Ληξιπρόθεσμες",
+    "showCompleted": "Εμφάνιση ολοκληρωμένων",
+    "completed": "Ολοκληρώθηκε",
+    "complete": "Ολοκλήρωση",
+    "type": "Τύπος"
+  },
+  "calendar": {
+    "title": "Ημερολόγιο",
+    "today": "Σήμερα",
+    "previous": "Προηγούμενο",
+    "next": "Επόμενο",
+    "month": "Μήνας",
+    "week": "Εβδομάδα",
+    "day": "Ημέρα",
+    "agenda": "Ατζέντα",
+    "time": "Ώρα",
+    "event": "Γεγονός",
+    "noEvents": "Δεν υπάρχουν γεγονότα"
+  },
+  "notifications": {
+    "title": "Ειδοποιήσεις",
+    "noNotifications": "Δεν υπάρχουν ειδοποιήσεις",
+    "markAsRead": "Σήμανση ως αναγνωσμένο",
+    "markAllAsRead": "Σήμανση όλων ως αναγνωσμένα"
+  },
+  "notes": {
+    "title": "Σημειώσεις",
+    "addNote": "Προσθήκη Σημείωσης",
+    "editNote": "Επεξεργασία Σημείωσης",
+    "content": "Περιεχόμενο",
+    "noNotes": "Δεν υπάρχουν σημειώσεις"
+  },
+  "documents": {
+    "title": "Έγγραφα",
+    "uploadDocument": "Μεταφόρτωση Εγγράφου",
+    "fileName": "Όνομα Αρχείου",
+    "fileSize": "Μέγεθος",
+    "uploadDate": "Ημ. Μεταφόρτωσης",
+    "download": "Λήψη",
+    "noDocuments": "Δεν υπάρχουν έγγραφα"
+  },
+  "errors": {
+    "generic": "Κάτι πήγε στραβά",
+    "networkError": "Σφάλμα δικτύου",
+    "notFound": "Δεν βρέθηκε",
+    "unauthorized": "Μη εξουσιοδοτημένη πρόσβαση",
+    "validationError": "Σφάλμα επικύρωσης",
+    "tryAgain": "Δοκιμάστε ξανά"
+  }
+}

@@ -16,8 +16,10 @@ import {
 import LoadingState from "../../components/common/LoadingState";
 import ErrorState from "../../components/common/ErrorState";
 import type { TaskStatus } from "../../types/task";
+import { useTranslation } from "react-i18next";
 
 const TasksListPage: React.FC = () => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
 
   const tasksQuery = useQuery({
@@ -39,7 +41,7 @@ const TasksListPage: React.FC = () => {
   });
 
   if (tasksQuery.isLoading || casesQuery.isLoading) return <LoadingState />;
-  if (tasksQuery.isError) return <ErrorState message="Failed to load tasks" />;
+  if (tasksQuery.isError) return <ErrorState message={t("errors.generic")} />;
 
   const tasks = tasksQuery.data || [];
   const cases = casesQuery.data || [];
@@ -47,49 +49,57 @@ const TasksListPage: React.FC = () => {
   return (
     <Box>
       <Typography variant="h5" mb={2}>
-        Tasks
+        {t("tasks.title")}
       </Typography>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Title</TableCell>
-            <TableCell>Case</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>Due Date</TableCell>
+            <TableCell>{t("common.title")}</TableCell>
+            <TableCell>{t("cases.title")}</TableCell>
+            <TableCell>{t("common.status")}</TableCell>
+            <TableCell>{t("tasks.dueDate")}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {tasks.map((t) => {
-            const caseFile = cases.find((c) => c.id === t.caseFileId);
+          {tasks.map((task) => {
+            const caseFile = cases.find((c) => c.id === task.caseFileId);
             return (
-              <TableRow key={t.id}>
-                <TableCell>{t.title}</TableCell>
+              <TableRow key={task.id}>
+                <TableCell>{task.title}</TableCell>
                 <TableCell>{caseFile?.title || "-"}</TableCell>
                 <TableCell>
                   <Select
                     size="small"
-                    value={t.status}
+                    value={task.status}
                     onChange={(e) =>
                       updateStatusMutation.mutate({
-                        id: t.id,
+                        id: task.id,
                         status: e.target.value as TaskStatus,
                       })
                     }
                   >
-                    <MenuItem value="OPEN">OPEN</MenuItem>
-                    <MenuItem value="IN_PROGRESS">IN PROGRESS</MenuItem>
-                    <MenuItem value="DONE">DONE</MenuItem>
+                    <MenuItem value="OPEN">
+                      {t("tasks.statuses.pending")}
+                    </MenuItem>
+                    <MenuItem value="IN_PROGRESS">
+                      {t("tasks.statuses.inProgress")}
+                    </MenuItem>
+                    <MenuItem value="DONE">
+                      {t("tasks.statuses.completed")}
+                    </MenuItem>
                   </Select>
                 </TableCell>
                 <TableCell>
-                  {t.dueDate ? new Date(t.dueDate).toLocaleDateString() : "-"}
+                  {task.dueDate
+                    ? new Date(task.dueDate).toLocaleDateString()
+                    : "-"}
                 </TableCell>
               </TableRow>
             );
           })}
           {tasks.length === 0 && (
             <TableRow>
-              <TableCell colSpan={4}>No tasks.</TableCell>
+              <TableCell colSpan={4}>{t("tasks.noTasks")}</TableCell>
             </TableRow>
           )}
         </TableBody>

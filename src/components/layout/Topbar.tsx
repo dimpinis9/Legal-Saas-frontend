@@ -13,9 +13,12 @@ import { useAuth } from "../../hooks/useAuth.ts";
 import NotificationsMenu from "../common/NotificationsMenu.tsx";
 import GlobalSearch from "../common/GlobalSearch.tsx";
 import QuickAddCase from "../common/QuickAddCase.tsx";
+import { LanguageSwitcher } from "../common/LanguageSwitcher.tsx";
+import { useTranslation } from "react-i18next";
 
 const Topbar: React.FC = () => {
   const { logout } = useAuth();
+  const { t } = useTranslation();
   const [quickAddOpen, setQuickAddOpen] = React.useState(false);
 
   return (
@@ -30,7 +33,7 @@ const Topbar: React.FC = () => {
           </Typography>
           <Box display="flex" alignItems="center" gap={2}>
             <GlobalSearch />
-            <Tooltip title="Γρήγορη Προσθήκη Υπόθεσης">
+            <Tooltip title={t("dashboard.addCase")}>
               <IconButton
                 color="inherit"
                 onClick={() => setQuickAddOpen(true)}
@@ -40,8 +43,9 @@ const Topbar: React.FC = () => {
               </IconButton>
             </Tooltip>
             <NotificationsMenu />
+            <LanguageSwitcher />
             <Button color="inherit" onClick={logout}>
-              Logout
+              {t("auth.logout")}
             </Button>
           </Box>
         </Toolbar>
